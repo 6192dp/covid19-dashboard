@@ -1,0 +1,37 @@
+.body_header {
+  display: flex;
+  flex-direction: row;
+  margin: 0.75rem;
+  flex-wrap: wrap;
+}
+.body_tile {
+  min-width: 6rem;
+  background: #777777;
+  border-radius: 3rem;
+  padding: 0.75rem;
+  box-shadow: 0 1px 2px 0 rgba(255, 255, 255, 1);
+  margin: 0 1rem 1rem 0;
+}
+.lbl_tile {
+  font-family: "Rajdhani", sans-serif;
+  font-weight: bold;
+  text-align: center;
+  color: #cccccc;
+}
+.val_title {
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 600;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #ffffff;
+}
+.lbl_overall {
+  font-weight: bold;
+  margin-left: 0.75rem;
+  color: #999999;
+}
+
+.root_map {
+  height: 24rem;
+  margin: 2rem;
+}

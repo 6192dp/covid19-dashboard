@@ -1,0 +1,57 @@
+import React from "react";
+import { FixedSizeList as List } from "react-window";
+import ReactCountryFlag from "react-country-flag";
+import "./styles.css";
+
+export const Table = props => {
+  const { allCountriesData } = props || {};
+  const itemCount = (allCountriesData && allCountriesData.length) || 0;
+  return (
+    <div className="root_table">
+      <div className="hdr_table">Confirmed Cases By Country</div>
+      <List
+        height={500}
+        itemCount={itemCount}
+        itemSize={30}
+        width={"18rem"}
+        itemData={allCountriesData}
+        className="root_ldr_window"
+      >
+        {CountryRow}
+      </List>
+    </div>
+  );
+};
+
+const CountryRow = ({ data, index, style }) => {
+  const dataUtil = (data && data[index]) || {};
+  return (
+    <div
+      className={index % 2 ? "card_country " + "even_row" : "card_country"}
+      style={style}
+    >
+      <div className="root_row">
+        <div className="val_country"> {dataUtil.cases}</div>
+
+        <div className="lbl_country">{dataUtil.country}</div>
+        {dataUtil.countryInfo && dataUtil.countryInfo.iso2 ? (
+          getCountryFlag(dataUtil.countryInfo.iso2)
+        ) : (
+          <div />
+        )}
+      </div>
+    </div>
+  );
+};
+
+const getCountryFlag = country_code => {
+  return <ReactCountryFlag countryCode={country_code} style={flagStyle} />;
+};
+
+const flagStyle = {
+  height: "1.19rem",
+  width: "1.19rem",
+  marginRight: "1rem",
+  marginTop: "0.1rem",
+  alignSelf: "center"
+};

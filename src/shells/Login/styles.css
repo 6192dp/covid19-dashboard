@@ -1,0 +1,38 @@
+.body_login {
+  margin: 0.75rem;
+}
+.root_hdr {
+  background: #8ee4af;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  text-align: center;
+}
+.input_mobno,
+.input_passValue {
+  margin-bottom: 2rem;
+}
+.btn_login {
+  width: 12rem;
+  font-weight: bold;
+  font-size: 1.25rem;
+  padding: 0.75rem 2rem;
+  text-align: center;
+  border-radius: 3.25rem;
+  color: #ffffff;
+  background: #5cdb95;
+  margin-top: 5rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+.txt_footer {
+  margin-top: 1rem;
+  font-weight: 600;
+  color: #777777;
+}
+.txt_footer span {
+  cursor: pointer;
+  color: red;
+}

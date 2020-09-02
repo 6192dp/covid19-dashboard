@@ -1,0 +1,36 @@
+.root_table {
+  margin: 0.75rem;
+  height: 15rem;
+  overflow-y: auto;
+}
+.body_table {
+}
+.root_row {
+  display: flex;
+  flex-direction: row;
+  padding: 0.25rem 0.75rem 0;
+}
+.card_country {
+  background: rgba(255, 255, 255, 0.1);
+  color: #999999;
+  font-weight: bold;
+}
+
+.even_row {
+  background: #ffffff0d;
+}
+.lbl_country {
+  margin-right: 0.2rem;
+  font-weight: 600;
+  color: #999999;
+}
+.val_country {
+  color: #fe3555;
+  margin-right: 0.25rem;
+}
+.hdr_table {
+  color: #cccccc;
+  font-weight: 500;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
