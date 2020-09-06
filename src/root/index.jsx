@@ -24,7 +24,7 @@ const Root = () => (
         <Route exact path="/" component={Login} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={SignUp} />
-        <Route exact path="/countries" component={DashHeader} />
+        <Route path="/home" component={DashHeader} />
       </Switch>
     </Router>
   </Provider>

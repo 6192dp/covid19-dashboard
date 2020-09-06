@@ -24,6 +24,26 @@ const SignUp = props => {
   const [mobNo, updateMobNo] = useState("");
   const [passValue, updatePassValue] = useState("");
 
+  useEffect(() => {
+    //once component mounts
+    if (props.login && props.login.emailErrorText) {
+      props.clearEmailErrorText();
+    }
+    if (props.login && props.login.passwordErrorText) {
+      props.clearPasswordErrorText();
+    }
+
+    // before component unmounts
+    return () => {
+      if (props.login && props.login.emailErrorText) {
+        props.clearEmailErrorText();
+      }
+      if (props.login && props.login.passwordErrorText) {
+        props.clearPasswordErrorText();
+      }
+    };
+  }, []);
+
   const handleMobNoChange = e => {
     updateMobNo(e.target.value);
   };
@@ -35,17 +55,40 @@ const SignUp = props => {
   const navigateToLoginScreen = () => {
     props.history.push("login");
   };
+
+  const handleSignupClick = () => {
+    //If email/password is empty or does not match the format criteria, show an error
+    //else call Login API
+    if (mobNo === "" || !mobNo.includes("@") || !mobNo.includes(".")) {
+      props.updateEmailErrorText("Enter a valid e-mail address");
+    } else if (passValue === "" || passValue.length < 6) {
+      props.updatePasswordErrorText(
+        "Password should be atleast 6 characters long!"
+      );
+    } else {
+      props.handleSignUpApi(
+        { user_email: mobNo, user_password: passValue },
+        { history: props.history }
+      );
+    }
+  };
+
   return (
     <div className="root_login">
       <Header headerTitle="Create an Account" />
       <div className={classes.root}>
         <div className="input_mobno">
           <TextField
-            label="Mobile Number"
+            label="Email Address"
             variant="outlined"
             onChange={handleMobNoChange}
             value={mobNo}
           />
+          {props.login && props.login.emailErrorText ? (
+            <div className="txt_error">{props.login.emailErrorText}</div>
+          ) : (
+            <div />
+          )}
         </div>
         <div className="input_passValue">
           <TextField
@@ -55,9 +98,16 @@ const SignUp = props => {
             value={passValue}
             type="password"
           />
+          {props.login && props.login.passwordErrorText ? (
+            <div className="txt_error">{props.login.passwordErrorText}</div>
+          ) : (
+            <div />
+          )}
         </div>
 
-        <div className="btn_login">Register</div>
+        <div className="btn_login" onClick={handleSignupClick}>
+          Register
+        </div>
         <div className="txt_footer">
           Already have an account?{" "}
           <span onClick={navigateToLoginScreen}>Sign In</span>
@@ -66,6 +116,11 @@ const SignUp = props => {
     </div>
   );
 };
+
+function mapStateToProps(state) {
+  const { login } = state;
+  return { login };
+}
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
@@ -78,7 +133,7 @@ function mapDispatchToProps(dispatch) {
 
 export default withRouter(
   connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
   )(SignUp)
 );

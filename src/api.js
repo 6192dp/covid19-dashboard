@@ -8,13 +8,13 @@ export default function* api(action) {
   const x = getStateValue("user") || null;
   const token = (x && x.jwt_token) || localStorage.user_token || null;
   const baseUrl = isLambdaAPI
-    ? "https://19yst2t73d.execute-api.ap-south-1.amazonaws.com/"
+    ? "https://8tdsv2ee50.execute-api.ap-south-1.amazonaws.com/"
     : "https://disease.sh/";
 
   const form = action.containsFormData
     ? { "Content-Type": "multipart/form-data" }
     : {};
-  const headers = Object.assign({}, { Authorization: token }, form);
+  //const headers = Object.assign({}, { Authorization: token }, form);
   // yield put({ type: "LOADING_START", incomingApi: action.handler });
 
   try {
@@ -22,8 +22,8 @@ export default function* api(action) {
       method: routes[action.handler].method,
       url: baseUrl + routes[action.handler].path,
       data: action.payload || null,
-      params: action.query || null,
-      headers
+      params: action.query || null
+      //  headers
     });
 
     //yield put({ type: "LOADING_STOP", incomingApi: action.handler });

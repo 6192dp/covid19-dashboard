@@ -1,5 +1,6 @@
 import { takeLatest, put, call } from "redux-saga/effects";
 import api from "../api.js";
+import history from "../root/history";
 
 function* updateAllCovidData() {
   const action = Object.assign({});
@@ -57,4 +58,17 @@ function* fetchACountryData() {
 
 /* ---------------------------------------------------------------------- */
 
-export default [fetchAllCovidData, fetchAllCountriesData, fetchACountryData];
+function Navigation(action) {
+  history.push(action.path);
+}
+
+function* NavigationHandler() {
+  yield takeLatest("NAVIGATE", Navigation);
+}
+
+export default [
+  fetchAllCovidData,
+  fetchAllCountriesData,
+  fetchACountryData,
+  NavigationHandler
+];
