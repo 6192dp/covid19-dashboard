@@ -14,8 +14,8 @@ export function clearPasswordErrorText() {
   return { type: "CLEAR_PASSWORD_ERROR_TEXT" };
 }
 
-export function handleLoginApi(payload) {
-  return { type: "HANDLE_LOGIN_API", payload };
+export function handleLoginApi(payload, history) {
+  return { type: "HANDLE_LOGIN_API", payload, history };
 }
 
 export function handleSignUpApi(payload, history) {

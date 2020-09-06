@@ -64,7 +64,10 @@ const Login = props => {
         "Password should be atleast 6 characters long!"
       );
     } else {
-      props.handleLoginApi({ user_email: mobNo, user_password: passValue });
+      props.handleLoginApi(
+        { user_email: mobNo, user_password: passValue },
+        { history: props.history }
+      );
     }
   };
 
