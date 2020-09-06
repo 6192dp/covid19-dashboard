@@ -4,7 +4,7 @@ import { getStateValue } from "./root/localStorage";
 import { put } from "redux-saga/effects";
 
 export default function* api(action) {
-  const { isLambdaAPI } = acttion;
+  const { isLambdaAPI } = action;
   const x = getStateValue("user") || null;
   const token = (x && x.jwt_token) || localStorage.user_token || null;
   const baseUrl = isLambdaAPI
