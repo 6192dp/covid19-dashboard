@@ -14,6 +14,14 @@ const routes = {
   V3_COVID19_GET_INDIA_DATA: {
     path: "v3/covid-19/countries/356",
     method: "get"
+  },
+  V1_USER_SIGNUP: {
+    path: "v1/users/signup",
+    method: "post"
+  },
+  V1_USER_LOGIN: {
+    path: "v1/users/login",
+    method: "post"
   }
 };
 

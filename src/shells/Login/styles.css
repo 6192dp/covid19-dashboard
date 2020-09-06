@@ -36,3 +36,8 @@
   cursor: pointer;
   color: red;
 }
+.txt_error {
+  color: red;
+  font-weight: 500;
+  padding-top: 0.25rem;
+}

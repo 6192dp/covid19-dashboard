@@ -4,9 +4,12 @@ import { getStateValue } from "./root/localStorage";
 import { put } from "redux-saga/effects";
 
 export default function* api(action) {
+  const { isLambdaAPI } = acttion;
   const x = getStateValue("user") || null;
   const token = (x && x.jwt_token) || localStorage.user_token || null;
-  const baseUrl = "https://disease.sh/";
+  const baseUrl = isLambdaAPI
+    ? "https://19yst2t73d.execute-api.ap-south-1.amazonaws.com/"
+    : "https://disease.sh/";
 
   const form = action.containsFormData
     ? { "Content-Type": "multipart/form-data" }

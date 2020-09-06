@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
   root: {
     margin: "1.25rem",
     "& .MuiTextField-root": {
-      width: "16rem"
+      width: "20rem"
     }
   }
 }));

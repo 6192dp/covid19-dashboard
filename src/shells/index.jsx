@@ -20,7 +20,11 @@ const Dasheader = props => {
         allCovidData={props.allCovidData && props.allCovidData.allCovidData}
       />
 
-      <Globe />
+      <Globe
+        allCountriesData={
+          props.allCovidData && props.allCovidData.allCountriesData
+        }
+      />
       <Table
         allCountriesData={
           props.allCovidData && props.allCovidData.allCountriesData
