@@ -36,6 +36,11 @@ const Dasheader = props => {
         Would you like to know the status of vaccine development progress?{" "}
         <span>Track here</span>
       </div>
+      <br />
+      <div className="lnk_vaccineTracker">
+        The below world map has a 'disease icon' marked for each of the reported
+        countries. On click of the icons shows the total cases in that country
+      </div>
 
       <Globe
         allCountriesData={
