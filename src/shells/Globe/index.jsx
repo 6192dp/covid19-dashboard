@@ -7,7 +7,8 @@ const zoom = 4;
 
 export const Globe = props => {
   const { allCountriesData } = props || {};
-  const [geoJSON, updateGeoJSON] = useState({});
+  //const [geoJSON, updateGeoJSON] = useState({});
+  const [markers, updateMarker] = useState([]);
 
   useEffect(() => {
     const hasData =
@@ -15,29 +16,56 @@ export const Globe = props => {
 
     if (!hasData) return;
 
-    const geoJsonUtil = {
-      type: "FeatureCollection",
-      features: allCountriesData.map((country = {}) => {
-        const { countryInfo = {} } = country;
-        const { lat, long: lng } = countryInfo;
-        return {
-          type: "Feature",
-          properties: {
-            ...country
-          },
-          geometry: {
-            type: "Point",
-            coordinates: [lng, lat]
-          }
-        };
-      })
-    };
+    let markersUtil = [];
+    allCountriesData.map((country, index) => {
+      const keyUtil = "marker" + index;
+      const { countryInfo = {} } = country;
+      const { lat, long: lng } = countryInfo;
+      markersUtil.push({
+        key: keyUtil,
+        position: [lat, lng],
+        content: `${country.cases} cases`
+      });
 
-    console.log("geo: " + geoJsonUtil);
-    updateGeoJSON(geoJsonUtil);
+      updateMarker(markersUtil);
+    });
+
+    // const geoJsonUtil = {
+    //   type: "FeatureCollection",
+    //   features: allCountriesData.map((country = {}) => {
+    //     const { countryInfo = {} } = country;
+    //     const { lat, long: lng } = countryInfo;
+    //     return {
+    //       type: "Feature",
+    //       properties: {
+    //         ...country
+    //       },
+    //       geometry: {
+    //         type: "Point",
+    //         coordinates: [lng, lat]
+    //       }
+    //     };
+    //   })
+    // };
+    // updateGeoJSON(geoJsonUtil);
   }, [allCountriesData]);
 
-  if (Object.keys(geoJSON).length) {
+  const MyPopupMarker = ({ content, position }) => (
+    <Marker position={position}>
+      <Popup>{content}</Popup>
+    </Marker>
+  );
+
+  const MyMarkersList = ({ markers }) => {
+    const items = markers.map(({ key, ...props }) => (
+      <MyPopupMarker key={key} {...props} />
+    ));
+    console.log(items);
+    return <React.Fragment>{items}</React.Fragment>;
+  };
+
+  //if (Object.keys(geoJSON).length) {
+  if (markers.length) {
     return (
       <div className="root_map">
         <Map
@@ -58,7 +86,9 @@ export const Globe = props => {
               '&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             }
           />
-          <GeoJSON
+
+          <MyMarkersList markers={markers} />
+          {/* <GeoJSON
             key={geoJSON}
             data={geoJSON}
             style={() => ({
@@ -67,7 +97,7 @@ export const Globe = props => {
               fillColor: "#1a1d62",
               fillOpacity: 1
             })}
-          />
+          /> */}
           {/* <Marker position={[50, 10]}>
             <Popup>Popup for any custom information.</Popup>
           </Marker> */}
