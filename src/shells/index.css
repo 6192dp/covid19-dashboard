@@ -3,3 +3,12 @@
   height: 100%;
   width: 100vw;
 }
+.lnk_vaccineTracker {
+  font-weight: bold;
+  margin-left: 0.75rem;
+  color: #999999;
+}
+.lnk_vaccineTracker span {
+  color: #008ae1;
+  cursor: pointer;
+}

@@ -48,7 +48,7 @@ const VaccineTracker = props => {
       });
     return (
       <div className="root_vaccine">
-        <Header headerTitle="Vaccine Tracker" />
+        <Header headerTitle="Vaccine Development Phase" />
 
         <div className="total_vaccine">
           Total Candidates: {vaccineDataUtil.totalCandidates}

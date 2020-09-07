@@ -14,6 +14,10 @@ const Dasheader = props => {
     props.getAllCovidData();
     props.getAllCountriesData();
   }, []);
+
+  const navToVaccineTracker = () => {
+    props.history.push("/vaccine");
+  };
   return (
     <div className="root_home">
       <Mainheader headerTitle="Worldwide numbers" />
@@ -21,16 +25,22 @@ const Dasheader = props => {
         allCovidData={props.allCovidData && props.allCovidData.allCovidData}
       />
 
-      <Globe
-        allCountriesData={
-          props.allCovidData && props.allCovidData.allCountriesData
-        }
-      />
       <Table
         allCountriesData={
           props.allCovidData && props.allCovidData.allCountriesData
         }
         history={props.history}
+      />
+
+      <div onClick={navToVaccineTracker} className="lnk_vaccineTracker">
+        Would you like to know the status of vaccine development progress?{" "}
+        <span>Track here</span>
+      </div>
+
+      <Globe
+        allCountriesData={
+          props.allCovidData && props.allCovidData.allCountriesData
+        }
       />
     </div>
   );

@@ -3,6 +3,9 @@
   height: 15rem;
   overflow-y: auto;
 }
+.body_table {
+  width: 100%;
+}
 .body_table tr {
   cursor: pointer;
 }
@@ -31,7 +34,7 @@
 }
 .hdr_table {
   color: #cccccc;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 0.875rem;
   margin-bottom: 0.5rem;
 }
