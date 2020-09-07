@@ -1,5 +1,6 @@
 import React from "react";
 import "./styles.css";
+import CountUp from "react-countup";
 
 export const Header = props => {
   const { allCovidData } = props || {};
@@ -42,15 +43,21 @@ export const Header = props => {
       <div className="body_header">
         <div className="body_tile">
           <div className="lbl_tile">Cases</div>
-          <div className="val_title">{todayCases}</div>
+          <div className="val_title">
+            <CountUp end={todayCases} duration={5} />
+          </div>
         </div>
         <div className="body_tile">
           <div className="lbl_tile">Deaths</div>
-          <div className="val_title">{todayDeaths}</div>
+          <div className="val_title">
+            <CountUp end={todayDeaths} duration={5} />
+          </div>
         </div>
         <div className="body_tile">
           <div className="lbl_tile">Recovered</div>
-          <div className="val_title">{todayRecovered}</div>
+          <div className="val_title">
+            <CountUp end={todayRecovered} duration={5} />
+          </div>
         </div>
       </div>
     </div>
