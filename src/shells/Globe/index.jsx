@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Map, Marker, Popup, TileLayer, Circle, GeoJSON } from "react-leaflet";
 import "../Header/styles.css";
+import feverIcon from "../../icons/fever.svg";
+import L from "leaflet";
 
 const position = [22, 77];
 const zoom = 4;
@@ -50,8 +52,19 @@ export const Globe = props => {
     // updateGeoJSON(geoJsonUtil);
   }, [allCountriesData]);
 
+  const pointerIcon = new L.Icon({
+    iconUrl: feverIcon,
+    iconRetinaUrl: feverIcon,
+    iconAnchor: [5, 55],
+    popupAnchor: [10, -44],
+    iconSize: [25, 55],
+    //shadowUrl: '../assets/marker-shadow.png',
+    shadowSize: [68, 95],
+    shadowAnchor: [20, 92]
+  });
+
   const MyPopupMarker = ({ content, position }) => (
-    <Marker position={position}>
+    <Marker position={position} icon={pointerIcon}>
       <Popup>{content}</Popup>
     </Marker>
   );
