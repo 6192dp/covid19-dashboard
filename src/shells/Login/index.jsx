@@ -116,6 +116,16 @@ const Login = props => {
           <span onClick={navigateToSignupScreen}>Register here!</span>
         </div>
       </div>
+      <div className="txt_iconcredits">
+        Favicon and Cursor Mask Icon made by{" "}
+        <a href="https://www.flaticon.com/authors/freepik" title="Freepik">
+          Freepik
+        </a>{" "}
+        from{" "}
+        <a href="https://www.flaticon.com/" title="Flaticon">
+          www.flaticon.com
+        </a>
+      </div>
     </div>
   );
 };
