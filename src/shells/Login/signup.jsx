@@ -12,6 +12,10 @@ import { Header } from "./header";
 const useStyles = makeStyles(theme => ({
   root: {
     margin: "1.25rem",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
     "& .MuiTextField-root": {
       width: "20rem"
     }

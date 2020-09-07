@@ -22,6 +22,10 @@ const routes = {
   V1_USER_LOGIN: {
     path: "v1/users/login",
     method: "post"
+  },
+  V3_COVID19_VACCINE: {
+    path: "v3/covid-19/vaccine",
+    method: "get"
   }
 };
 

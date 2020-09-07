@@ -8,6 +8,7 @@ import history from "./history";
 import DashHeader from "../shells/index";
 import Login from "../shells/Login";
 import SignUp from "../shells/Login/signup";
+import VaccineTracker from "../shells/Vaccine/index";
 
 const store = configureStore(history);
 
@@ -25,6 +26,7 @@ const Root = () => (
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={SignUp} />
         <Route path="/home" component={DashHeader} />
+        <Route path="/vaccine" component={VaccineTracker} />
       </Switch>
     </Router>
   </Provider>
