@@ -16,7 +16,7 @@ function* updateLoginAPIResp(action) {
         emailErrorText: response.data.message
       });
     } else if (response.data.status === 200) {
-      history_1.push("/home");
+      history_1.replace("/home");
     }
   } else if (response.status === 400) {
     yield put({
@@ -50,7 +50,7 @@ function* updateSignupAPIResp(action) {
       //yield put({ type: "NAVIGATE", path: "home" });
       //history.push("/home");
       //yield put(push("/home"));
-      history_1.push("/home");
+      history_1.replace("/home");
     }
   } else if (response.status === 400) {
     yield put({
