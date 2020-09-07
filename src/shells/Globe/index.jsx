@@ -60,7 +60,6 @@ export const Globe = props => {
     const items = markers.map(({ key, ...props }) => (
       <MyPopupMarker key={key} {...props} />
     ));
-    console.log(items);
     return <React.Fragment>{items}</React.Fragment>;
   };
 
