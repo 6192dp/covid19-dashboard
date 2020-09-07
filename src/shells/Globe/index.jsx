@@ -37,42 +37,45 @@ export const Globe = props => {
     updateGeoJSON(geoJsonUtil);
   }, [allCountriesData]);
 
-  return (
-    <div className="root_map">
-      <Map
-        center={position}
-        zoom={zoom}
-        style={{ height: "100%", width: "100%" }}
-        attributionControl={true}
-        zoomControl={true}
-        doubleClickZoom={true}
-        scrollWheelZoom={true}
-        dragging={true}
-        animate={true}
-        easeLinearity={0.35}
-      >
-        <TileLayer
-          url={"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"}
-          attribution={
-            '&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          }
-        />
-        <GeoJSON
-          key={geoJSON}
-          data={geoJSON}
-          style={() => ({
-            color: "#4a83ec",
-            weight: 0.5,
-            fillColor: "#1a1d62",
-            fillOpacity: 1
-          })}
-        />
-        {/* <Marker position={[50, 10]}>
-          <Popup>Popup for any custom information.</Popup>
-        </Marker> */}
-      </Map>
-    </div>
-  );
+  if (Object.keys(geoJSON).length) {
+    return (
+      <div className="root_map">
+        <Map
+          center={position}
+          zoom={zoom}
+          style={{ height: "100%", width: "100%" }}
+          attributionControl={true}
+          zoomControl={true}
+          doubleClickZoom={true}
+          scrollWheelZoom={true}
+          dragging={true}
+          animate={true}
+          easeLinearity={0.35}
+        >
+          <TileLayer
+            url={"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"}
+            attribution={
+              '&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            }
+          />
+          <GeoJSON
+            key={geoJSON}
+            data={geoJSON}
+            style={() => ({
+              color: "#4a83ec",
+              weight: 0.5,
+              fillColor: "#1a1d62",
+              fillOpacity: 1
+            })}
+          />
+          {/* <Marker position={[50, 10]}>
+            <Popup>Popup for any custom information.</Popup>
+          </Marker> */}
+        </Map>
+      </div>
+    );
+  }
+  return <div />;
 };
 
 // const MyCircles = props => {

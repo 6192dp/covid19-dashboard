@@ -2,6 +2,8 @@
   margin: 0.75rem;
 }
 .root_hdr {
+  position: sticky;
+  top: 0;
   background: #8ee4af;
   font-size: 1.2rem;
   font-weight: bold;

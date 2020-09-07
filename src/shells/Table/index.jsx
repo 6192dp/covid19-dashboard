@@ -21,32 +21,35 @@ export const Table = props => {
         placeholder="Search for a country"
       /> */}
       <table className="body_table" id="myTable">
-        {allCountriesData &&
-          allCountriesData.length &&
-          allCountriesData.map(dataUtil => {
-            return (
-              <tr
-                onClick={handleCountryRowClick.bind(
-                  null,
-                  dataUtil.countryInfo._id
-                )}
-              >
-                <th>
-                  <div className="val_country"> {dataUtil.cases}</div>
-                </th>
-                <th>
-                  <div className="lbl_country">{dataUtil.country}</div>
-                </th>
-                <th>
-                  {dataUtil.countryInfo && dataUtil.countryInfo.iso2 ? (
-                    getCountryFlag(dataUtil.countryInfo.iso2)
-                  ) : (
-                    <div />
+        <tbody>
+          {allCountriesData &&
+            allCountriesData.length &&
+            allCountriesData.map(dataUtil => {
+              return (
+                <tr
+                  onClick={handleCountryRowClick.bind(
+                    null,
+                    dataUtil.countryInfo._id
                   )}
-                </th>
-              </tr>
-            );
-          })}
+                  key={dataUtil.country}
+                >
+                  <th>
+                    <div className="val_country"> {dataUtil.cases}</div>
+                  </th>
+                  <th>
+                    <div className="lbl_country">{dataUtil.country}</div>
+                  </th>
+                  <th>
+                    {dataUtil.countryInfo && dataUtil.countryInfo.iso2 ? (
+                      getCountryFlag(dataUtil.countryInfo.iso2)
+                    ) : (
+                      <div />
+                    )}
+                  </th>
+                </tr>
+              );
+            })}
+        </tbody>
       </table>
     </div>
   );
