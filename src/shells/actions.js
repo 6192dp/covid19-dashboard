@@ -9,3 +9,7 @@ export function getAllCountriesData() {
 export function getCountryData(country_code) {
   return { type: "GET_COUNTRY_DATA", country_code };
 }
+
+export function updateCountryData(data) {
+  return { type: "UPDATE_COUNTRY_DATA", countryData: data };
+}

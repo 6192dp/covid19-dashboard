@@ -12,7 +12,6 @@ const Dasheader = props => {
   useEffect(() => {
     props.getAllCovidData();
     props.getAllCountriesData();
-    props.getCountryData({ countryCode: 356 });
   }, []);
   return (
     <div className="root_home">
@@ -29,6 +28,7 @@ const Dasheader = props => {
         allCountriesData={
           props.allCovidData && props.allCovidData.allCountriesData
         }
+        history={props.history}
       />
     </div>
   );

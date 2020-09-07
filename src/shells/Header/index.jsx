@@ -15,7 +15,7 @@ export const Header = props => {
   return (
     <div className="root_header">
       <div>
-        <div className="lbl_overall">Overall numbers:</div>
+        <div className="lbl_overall">Worldwide numbers till date:</div>
       </div>
       <div className="body_header">
         <div className="body_tile">
@@ -37,7 +37,7 @@ export const Header = props => {
       </div>
 
       <div>
-        <div className="lbl_overall">Today&apos;s numbers:</div>
+        <div className="lbl_overall">Worldwide numbers today:</div>
       </div>
       <div className="body_header">
         <div className="body_tile">

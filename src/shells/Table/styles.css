@@ -3,7 +3,8 @@
   height: 15rem;
   overflow-y: auto;
 }
-.body_table {
+.body_table tr {
+  cursor: pointer;
 }
 .root_row {
   display: flex;

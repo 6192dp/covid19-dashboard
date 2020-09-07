@@ -5,6 +5,19 @@ import * as localActions from "./actions";
 import { connect } from "react-redux";
 import "./styles.css";
 import { Header } from "../Login/header";
+import { PieChart } from "react-minimal-pie-chart";
+
+const colorsArr = [
+  "red",
+  "peru",
+  "burlywood",
+  "bisque",
+  "yellow",
+  "lightblue",
+  "violet",
+
+  "pink"
+];
 
 const VaccineTracker = props => {
   useEffect(() => {
@@ -17,11 +30,43 @@ const VaccineTracker = props => {
     vaccineData.vaccineData.totalCandidates
   ) {
     const vaccineDataUtil = vaccineData.vaccineData || {};
+    const phaseDataUtil = vaccineDataUtil.phases || [];
+    let transformArray = [];
+    phaseDataUtil &&
+      phaseDataUtil.length &&
+      phaseDataUtil.map((item, index) => {
+        transformArray.push({
+          title: item.phase,
+          color: colorsArr[index],
+          value: Number.parseInt(item.candidates, 10)
+          // Math.round(
+          //   ((Number.parseInt(item.candidates, 10) * 100) /
+          //     vaccineDataUtil.totalCandidates) *
+          //     100
+          // ) / 100
+        });
+      });
     return (
-      <div className="root_login">
+      <div className="root_vaccine">
         <Header headerTitle="Vaccine Tracker" />
 
-        <div>Total Candidates: {vaccineDataUtil.totalCandidates}</div>
+        <div className="total_vaccine">
+          Total Candidates: {vaccineDataUtil.totalCandidates}
+        </div>
+        <div className="pie_vaccine">
+          <PieChart
+            data={transformArray}
+            radius={PieChart.defaultProps.radius}
+            label={({ dataEntry }) =>
+              dataEntry.title + " (" + dataEntry.value + ")"
+            }
+            labelStyle={{
+              fontSize: "0.22rem",
+              fontWeight: "bold",
+              fontFamilt: "Rajdhani"
+            }}
+          />
+        </div>
       </div>
     );
   }

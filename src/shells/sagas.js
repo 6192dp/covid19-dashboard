@@ -38,23 +38,23 @@ function* fetchAllCountriesData() {
 
 /* ---------------------------------------------------------------------- */
 
-function* updateCountryData() {
-  // const { country_code } = action || {};
-  // const { countryCode } = country_code;
-  const action_1 = Object.assign({});
-  action_1.handler = "V3_COVID19_GET_INDIA_DATA";
-  const response = yield call(api, action_1);
-  if (response.status === 200) {
-    yield put({
-      type: "UPDATE_COUNTRY_DATA",
-      countryData: response.data
-    });
-  }
-}
+// function* updateCountryData() {
+//   // const { country_code } = action || {};
+//   // const { countryCode } = country_code;
+//   const action_1 = Object.assign({});
+//   action_1.handler = "V3_COVID19_GET_INDIA_DATA";
+//   const response = yield call(api, action_1);
+//   if (response.status === 200) {
+//     yield put({
+//       type: "UPDATE_COUNTRY_DATA",
+//       countryData: response.data
+//     });
+//   }
+// }
 
-function* fetchACountryData() {
-  yield takeLatest("GET_COUNTRY_DATA", updateCountryData);
-}
+// function* fetchACountryData() {
+//   yield takeLatest("GET_COUNTRY_DATA", updateCountryData);
+// }
 
 /* ---------------------------------------------------------------------- */
 
@@ -69,6 +69,6 @@ function* NavigationHandler() {
 export default [
   fetchAllCovidData,
   fetchAllCountriesData,
-  fetchACountryData,
+  //fetchACountryData,
   NavigationHandler
 ];

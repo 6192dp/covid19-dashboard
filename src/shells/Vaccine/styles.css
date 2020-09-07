@@ -1,0 +1,21 @@
+.root_vaccine {
+  height: 100vh;
+  background: black;
+}
+.pie_vaccine {
+  height: 24rem;
+  margin: 1rem;
+}
+.total_vaccine {
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+  font-size: 1.2rem;
+  text-align: center;
+  color: #999999;
+}
+
+@media screen and (max-width: 550px) {
+  .pie_vaccine text {
+    font-size: 0.25rem !important;
+  }
+}

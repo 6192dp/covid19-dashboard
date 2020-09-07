@@ -5,21 +5,30 @@ import "./styles.css";
 
 export const Table = props => {
   const { allCountriesData } = props || {};
+
+  const handleCountryRowClick = country_code => {
+    props.history.push("/country?countryCode=" + country_code);
+  };
   return (
     <div className="root_table">
       <div className="hdr_table">Confirmed Cases By Country</div>
-      <input
+      {/* <input
         id="myInput"
         type="text"
         onKeyDown={handleKeyUpSearch}
         placeholder="Search for a country"
-      />
+      /> */}
       <table className="body_table" id="myTable">
         {allCountriesData &&
           allCountriesData.length &&
           allCountriesData.map(dataUtil => {
             return (
-              <tr>
+              <tr
+                onClick={handleCountryRowClick.bind(
+                  null,
+                  dataUtil.countryInfo._id
+                )}
+              >
                 <th>
                   <div className="val_country"> {dataUtil.cases}</div>
                 </th>
@@ -43,27 +52,6 @@ export const Table = props => {
 
 const getCountryFlag = country_code => {
   return <ReactCountryFlag countryCode={country_code} style={flagStyle} />;
-};
-
-const handleKeyUpSearch = () => {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
-
-  // Loop through all table rows, and hide those who don't match the search query
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }
-  }
 };
 
 const flagStyle = {
