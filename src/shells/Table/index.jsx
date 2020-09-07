@@ -1,5 +1,5 @@
 import React from "react";
-import { FixedSizeList as List } from "react-window";
+//import { FixedSizeList as List } from "react-window";
 import ReactCountryFlag from "react-country-flag";
 import "./styles.css";
 
@@ -11,7 +11,9 @@ export const Table = props => {
   };
   return (
     <div className="root_table">
-      <div className="hdr_table">Confirmed Cases By Country</div>
+      <div className="hdr_table">
+        Confirmed Cases By Country - Click on any country to know more details
+      </div>
       {/* <input
         id="myInput"
         type="text"

@@ -27,6 +27,14 @@ const CountryData = props => {
       <div className="root_vaccine">
         <Header headerTitle="Country Data" />
 
+        <img
+          style={{ height: "5rem", margin: "0 auto 1rem", display: "flex" }}
+          src={
+            countryDataUtil &&
+            countryDataUtil.countryInfo &&
+            countryDataUtil.countryInfo.flag
+          }
+        />
         <div className="total_vaccine">Country : {countryDataUtil.country}</div>
         <div className="total_vaccine">
           Continent : {countryDataUtil.continent}

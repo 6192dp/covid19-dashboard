@@ -4,6 +4,7 @@ import { bindActionCreators } from "redux";
 import * as localActions from "./actions";
 import { connect } from "react-redux";
 import { Header } from "./Header";
+import { Header as Mainheader } from "./Login/header";
 import { Table } from "./Table";
 import { Globe } from "./Globe";
 import "./index.css";
@@ -15,6 +16,7 @@ const Dasheader = props => {
   }, []);
   return (
     <div className="root_home">
+      <Mainheader headerTitle="Worldwide numbers" />
       <Header
         allCovidData={props.allCovidData && props.allCovidData.allCovidData}
       />
